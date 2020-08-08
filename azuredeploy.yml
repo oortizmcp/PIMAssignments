@@ -1,0 +1,8 @@
+#Powershell
+#Run a powershell script on linux, macos, or windows
+-task: Powershell@2
+inputs: 
+  targetType: 'filePath'
+  filePath: '$(System.DefaultWorkingDirectory)/PSScripts/PIMRoles.ps1'
+  arguments: "-subname1 'subscriptionnamehere' -subname2 'subname2here'"
+  errorActionPreference: 'stop'
