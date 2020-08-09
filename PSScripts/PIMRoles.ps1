@@ -4,15 +4,16 @@
 
 param (
     [string] $subname,
-    [string] $groupEnvironment
+    #[string] $groupEnvironment
+    [string] $testGroup
 )
 
 #Subscription
-$subname = "yoursubhere"
-$groupEnvironment = 'DEV'
+#$subname = "yoursubhere"
+#$groupEnvironment = 'DEV'
 
 # Define group
-$testGroup = ('format'+ '_' + $groupEnvironment + '_' + 'SRE')
+# $testGroup = ('format'+ '_' + $groupEnvironment + '_' + 'SRE')
 
 
 # if multiple subs
@@ -85,6 +86,6 @@ AssignPIM -RoleName "Reader" -ResourceName $subname -ADGroupName $testGroup -Ass
 #if multiple roles
 foreach ($sub in $subs) {
     AssignPIM -RoleName "Reader" -ResourceName $sub -ADGroupName $testGroup -Assignment -AssignmentType Eligible -Justification "ticket123456"
-    AssignPIM -RoleName "customDevops" -ResourceName $sub -ADGroupName $testGroup -Assignment -AssignmentType Eligible -Justification "ticket123456"
+    #AssignPIM -RoleName "customDevops" -ResourceName $sub -ADGroupName $testGroup -Assignment -AssignmentType Eligible -Justification "ticket123456"
     AssignPIM -RoleName "VM Contributor" -ResourceName $sub -ADGroupName $testGroup -Assignment -AssignmentType Eligible -Justification "ticket123456"
 }
