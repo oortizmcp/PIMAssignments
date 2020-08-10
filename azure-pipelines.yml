@@ -14,8 +14,9 @@ steps:
   displayName: 'Run a one-line script'
 
 - task: DownloadSecureFile@1
+  name: $(devopspim.secureFilePath)
   inputs:
-    secureFile: '$(devopspim.pfx.secureFilePath)'
+    secureFile: 'devopspim.pfx'
 
 - task: PowerShell@2
   inputs:
