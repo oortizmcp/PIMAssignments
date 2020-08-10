@@ -49,7 +49,6 @@ function AssignPIM{
     )
 
     #Get group
-    Connect-AzureAD
     $ADGroup = Get-AzADGroup -SearchString $ADGroupNAme
 
     # Get resource details
@@ -81,12 +80,14 @@ function AssignPIM{
 
 }
 
-#example 
+#example
+Install-Module AzureAD -Force
+Import-Module AzureAD
 AssignPIM -RoleName "Reader" -ResourceName $subname -ADGroupName $testGroup -AssignmentType Eligible -Justification "ticket123456"
 
 #if multiple roles
-foreach ($sub in $subs) {
-    AssignPIM -RoleName "Reader" -ResourceName $sub -ADGroupName $testGroup -Assignment -AssignmentType Eligible -Justification "ticket123456"
+#foreach ($sub in $subs) {
+    #AssignPIM -RoleName "Reader" -ResourceName $sub -ADGroupName $testGroup -Assignment -AssignmentType Eligible -Justification "ticket123456"
     #AssignPIM -RoleName "customDevops" -ResourceName $sub -ADGroupName $testGroup -Assignment -AssignmentType Eligible -Justification "ticket123456"
     #AssignPIM -RoleName "VM Contributor" -ResourceName $sub -ADGroupName $testGroup -Assignment -AssignmentType Eligible -Justification "ticket123456"
 }
