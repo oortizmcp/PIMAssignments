@@ -22,14 +22,7 @@ param (
 # if multiple subs
 # $subs = @($subname1, $subname2)
 
-Install-PackageProvider -Name NuGet -RequiredVersion 2.8.5.201 -Force
-Import-PackageProvider -Name NuGet -RequiredVersion 2.8.5.201
-Install-Module AzureAD -Force
-Import-Module AzureAD
 
-$notAfter = (Get-Date).AddMonths(6) # Valid for 6 months
-$notBefore = (Get-Date).AddDays(0)
-$thumb = (New-SelfSignedCertificate -DnsName "oortiz.azlabscertificate.onmicrosoft.com" -CertStoreLocation "cert:\LocalMachine\My"  -KeyExportPolicy Exportable -Provider "Microsoft Enhanced RSA and AES Cryptographic Provider" -NotBefore $notBefore -NotAfter $notAfter).Thumbprint
 
 function AssignPIM{
 
@@ -92,8 +85,8 @@ function AssignPIM{
 
 }
 
+Connect-AzureAD -TenantId $tenantId -ApplicationId  $appId -CertificateThumbprint $thumb
 #example
-Connect-AzureAD -TenantId $tenantId -ApplicationId $appId -CertificateThumbprint $thumb
 AssignPIM -RoleName "Reader" -ResourceName $subname -ADGroupName $testGroup -AssignmentType Eligible -Justification "ticket123456"
 
 #if multiple roles
