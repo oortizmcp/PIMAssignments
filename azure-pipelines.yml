@@ -13,11 +13,6 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
-- task: DownloadSecureFile@1
-  name: devopspim
-  inputs:
-    secureFile: 'devopspim.pfx'
-
 - task: PowerShell@2
   inputs:
     filePath: 'PSScripts/PIMRoles.ps1'
