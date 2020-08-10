@@ -6,7 +6,6 @@ param (
     [string] $subname,
     #[string] $groupEnvironment
     [string] $testGroup
-    [string] $credential
 )
 
 #Subscription
