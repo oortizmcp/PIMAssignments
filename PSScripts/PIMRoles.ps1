@@ -90,4 +90,4 @@ AssignPIM -RoleName "Reader" -ResourceName $subname -ADGroupName $testGroup -Ass
     #AssignPIM -RoleName "Reader" -ResourceName $sub -ADGroupName $testGroup -Assignment -AssignmentType Eligible -Justification "ticket123456"
     #AssignPIM -RoleName "customDevops" -ResourceName $sub -ADGroupName $testGroup -Assignment -AssignmentType Eligible -Justification "ticket123456"
     #AssignPIM -RoleName "VM Contributor" -ResourceName $sub -ADGroupName $testGroup -Assignment -AssignmentType Eligible -Justification "ticket123456"
-}
+#}
