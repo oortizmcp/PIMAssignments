@@ -54,7 +54,7 @@ function AssignPIM{
     )
 
     #Get group
-    $ADGroup = Get-AzADGroup -SearchString $ADGroupNAme
+    $ADGroup = Get-AzureADGroup -SearchString $ADGroupNAme
 
     # Get resource details
     $PIMResourceFilter = "type eq '" + $ResourceType + "' and displayname eq '" + $ResourceName + "'"
