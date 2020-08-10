@@ -1,10 +1,6 @@
 
 trigger:
  - master 
-
- variables: 
-   subname: $(subname)
-   testGroup: $(testGroup)
  
  #Powershell
 #Run a powershell script
@@ -12,4 +8,7 @@ trigger:
 inputs: 
   targetType: 'filePath'
   filePath: '/PSScripts/PIMRoles.ps1'
+  arguments: 
+   - subname: $(subname)
+   - testGroup: $(testGroup)
   errorActionPreference: 'stop'
