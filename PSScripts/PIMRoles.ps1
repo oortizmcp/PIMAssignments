@@ -54,7 +54,6 @@ function AssignPIM{
     )
 
     #Get group
-    Connect-AzureAD
     $ADGroup = Get-AzureADGroup -SearchString $ADGroupNAme
 
     # Get resource details
@@ -87,6 +86,7 @@ function AssignPIM{
 }
 
 #example
+Connect-AzureAD
 AssignPIM -RoleName "Reader" -ResourceName $subname -ADGroupName $testGroup -AssignmentType Eligible -Justification "ticket123456"
 
 #if multiple roles
