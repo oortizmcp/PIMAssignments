@@ -1,6 +1,8 @@
 Write-Verbose "Import AzureAD module because is not on default VSTS agent"
-$azureAdModulePath = $PSScriptRoot + "\AzureAD\2.0.1.16\AzureAD.psd1"
-Import-Module $azureAdModulePath 
+Install-PackageProvider -Name NuGet -RequiredVersion 2.8.5.201 -Force
+Import-PackageProvider -Name NuGet -RequiredVersion 2.8.5.201
+Install-Module AzureAD -Force
+Import-Module AzureAD
 
 # Workaround to use AzureAD in this task. Get an access token and call Connect-AzureAD
 $serviceNameInput = Get-VstsInput -Name ConnectedServiceNameSelector -Require
