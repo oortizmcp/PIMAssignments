@@ -88,7 +88,7 @@ function AssignPIM{
 }
 
 #example
-Connect-AzureAD -TenantId $tenantId -ApplicationId $appId
+Connect-AzureAD -TenantId $tenantId -ApplicationId $appId -CertificateThumbprint $thumb
 AssignPIM -RoleName "Reader" -ResourceName $subname -ADGroupName $testGroup -AssignmentType Eligible -Justification "ticket123456"
 
 #if multiple roles
