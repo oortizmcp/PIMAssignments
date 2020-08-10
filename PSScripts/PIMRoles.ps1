@@ -53,29 +53,29 @@ function AssignPIM{
 
     # Get resource details
     $PIMResourceFilter = "type eq '" + $ResourceType + "' and displayname eq '" + $ResourceName + "'"
-    $PIMResource = Get-AzureADMSPrivilegedResource -ProviderId AzureResources -Filter $PIMResourceFilter
+    $PIMResource = Get-AzADMSPrivilegedResource -ProviderId AzureResources -Filter $PIMResourceFilter
 
     #get role details
     $PIMRoleFilter = "displayname eq '" + $RoleName + "'"
-    $PIMRole = Get-AzureADMSPrivilegedRoleDefinition -ProviderId AzureResources -ResourceId $PIMResource.Id -Filter $PIMRoleFilter
+    $PIMRole = Get-AzADMSPrivilegedRoleDefinition -ProviderId AzureResources -ResourceId $PIMResource.Id -Filter $PIMRoleFilter
 
     #get role settings
     $PIMRoleSettingsFilter = "ResourceId eq '" + $PIMResource.Id + "' and RoleDefinitionId eq '" + $PIMRole.Id + "'"
-    $PIMRoleSettings = Get-AzureADMSPrivilegedRoleSetting -ProviderId AzureResources -Filter $PIMRoleSettingsFilter
+    $PIMRoleSettings = Get-AzADMSPrivilegedRoleSetting -ProviderId AzureResources -Filter $PIMRoleSettingsFilter
 
     #update settings to allow permanent assignment
-    $RoleNewSetting = New-Object Microsoft.Open.MSGraph.Model.AzureADMSPrivilegedRuleSetting
+    $RoleNewSetting = New-Object Microsoft.Open.MSGraph.Model.AzADMSPrivilegedRuleSetting
     $RoleNewSetting.RuleIdentifier = "ExpirationRule"
     $RoleNewSetting.Setting = '{"maximumGrantPeriod":"180.00:00:00","maximumGrantPeriodInMinutes":259200,"permanentAssignment":true}'
 
-    Set-AzureADMSPrivilegedRoleSetting -ProviderId AzureResources -Id $PIMRoleSettings.Id -AdminElegibleSettings $RoleNewSetting -AdminMemberSettings $RoleNewSetting
+    Set-AzADMSPrivilegedRoleSetting -ProviderId AzureResources -Id $PIMRoleSettings.Id -AdminElegibleSettings $RoleNewSetting -AdminMemberSettings $RoleNewSetting
 
     #assign role permanently
-    $AssignmentSchedule = New-Object Microsoft.Open.MSGraph.Model.AzureADMSPrivilegedSchedule
+    $AssignmentSchedule = New-Object Microsoft.Open.MSGraph.Model.AzADMSPrivilegedSchedule
     $AssignmentSchedule.Type = "Once"
     $AssingmentSchedule.StartDateTime = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
 
-    Open-AzureADMSPrivilegedRoleAssignmentRequest -ProviderId AzureResources -Schedule $AssignmentSchedule `
+    Open-AzADMSPrivilegedRoleAssignmentRequest -ProviderId AzureResources -Schedule $AssignmentSchedule `
     -ResourceId $PIMResource.Id -RoleDefinitionId $PIMRole.Id -SubjectId $ADGroup.ObjectId -AssignmentState $AssignmentType -Type "AdminAdd" -Reason $Justification
 
 }
