@@ -27,6 +27,10 @@ Import-PackageProvider -Name NuGet -RequiredVersion 2.8.5.201
 Install-Module AzureAD -Force
 Import-Module AzureAD
 
+$notAfter = (Get-Date).AddMonths(6) # Valid for 6 months
+$notBefore = (Get-Date).AddDays(0)
+$thumb = (New-SelfSignedCertificate -CertStoreLocation "cert:\LocalMachine\My"  -KeyExportPolicy Exportable -Provider "Microsoft Enhanced RSA and AES Cryptographic Provider" -NotBefore $notBefore -NotAfter $notAfter).Thumbprint
+
 function AssignPIM{
 
     Param(
