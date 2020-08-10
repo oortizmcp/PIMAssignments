@@ -29,7 +29,7 @@ Import-Module AzureAD
 
 $notAfter = (Get-Date).AddMonths(6) # Valid for 6 months
 $notBefore = (Get-Date).AddDays(0)
-$thumb = (New-SelfSignedCertificate -CertStoreLocation "cert:\LocalMachine\My"  -KeyExportPolicy Exportable -Provider "Microsoft Enhanced RSA and AES Cryptographic Provider" -NotBefore $notBefore -NotAfter $notAfter).Thumbprint
+$thumb = (New-SelfSignedCertificate -DnsName "oortiz.azlabscertificate.onmicrosoft.com" -CertStoreLocation "cert:\LocalMachine\My"  -KeyExportPolicy Exportable -Provider "Microsoft Enhanced RSA and AES Cryptographic Provider" -NotBefore $notBefore -NotAfter $notAfter).Thumbprint
 
 function AssignPIM{
 
