@@ -5,13 +5,13 @@ Install-Module AzureAD -Force
 Import-Module AzureAD
 
 # Workaround to use AzureAD in this task. Get an access token and call Connect-AzureAD
-$serviceNameInput = Get-VstsInput -Name ConnectedServiceNameSelector -Require
-$serviceName = Get-VstsInput -Name $serviceNameInput -Require
-$endPointRM = Get-VstsEndpoint -Name $serviceName -Require
+#$serviceNameInput = Get-VstsInput -Name ConnectedServiceNameSelector -Require
+#$serviceName = Get-VstsInput -Name $serviceNameInput -Require
+#$endPointRM = Get-VstsEndpoint -Name $serviceName -Require
 
-$appId = $endPointRM.Auth.Parameters.ServicePrincipalId
-$secret = $endPointRM.Auth.Parameters.ServicePrincipalKey
-$tenantId = $endPointRM.Auth.Parameters.TenantId
+#$appId = $endPointRM.Auth.Parameters.ServicePrincipalId
+#$secret = $endPointRM.Auth.Parameters.ServicePrincipalKey
+#$tenantId = $endPointRM.Auth.Parameters.TenantId
 
 $adTokenUrl = "https://login.microsoftonline.com/$tenantId/oauth2/token"
 $resource = "https://graph.windows.net/"
