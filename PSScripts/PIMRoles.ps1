@@ -23,7 +23,7 @@ Install-PackageProvider -Name NuGet -RequiredVersion 2.8.5.201 -Force
 Import-PackageProvider -Name NuGet -RequiredVersion 2.8.5.201
 Install-Module AzureAD -Force
 Import-Module AzureAD
-Connect-AzureAD -TenantId $tenantId -ApplicationId $appId
+Connect-AzureAD -TenantId $(tenantId) -ApplicationId $(appId)
 
 function AssignPIM{
 
