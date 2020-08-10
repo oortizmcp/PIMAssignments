@@ -5,7 +5,9 @@
 param (
     [string] $subname,
     #[string] $groupEnvironment
-    [string] $testGroup
+    [string] $testGroup,
+    [securestring] $tenantId,
+    [securestring] $appId
 )
 
 #Subscription
@@ -86,7 +88,7 @@ function AssignPIM{
 }
 
 #example
-Connect-AzureAD
+Connect-AzureAD -TenantId $tenantId -ApplicationId $appId
 AssignPIM -RoleName "Reader" -ResourceName $subname -ADGroupName $testGroup -AssignmentType Eligible -Justification "ticket123456"
 
 #if multiple roles
