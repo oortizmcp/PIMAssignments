@@ -82,7 +82,7 @@ function AssignPIM{
 
 #example
 Install-Module AzureAD -Force
-Import-Module AzureAD
+Connect-AzureAD -TenantId $tenantId -ApplicationId $appId
 AssignPIM -RoleName "Reader" -ResourceName $subname -ADGroupName $testGroup -AssignmentType Eligible -Justification "ticket123456"
 
 #if multiple roles

@@ -19,5 +19,5 @@ steps:
     azureSubscription: 'oo-azlabs'
     ScriptType: 'FilePath'
     ScriptPath: 'PSScripts/PIMRoles.ps1'
-    ScriptArguments: '-subname $(subname) -testGroup $(testGroup)'
+    ScriptArguments: '-subname $(subname) -testGroup $(testGroup) -appid $(appId) -tenantId $(tenantId) -secret $(secret)'
     azurePowerShellVersion: 'LatestVersion'
