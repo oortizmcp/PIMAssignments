@@ -49,7 +49,7 @@ function AssignPIM{
     )
 
     #Get group
-    $ADGroup = Get-AzureADGroup -SearchString $ADGroupNAme
+    $ADGroup = Get-AzADGroup -SearchString $ADGroupNAme
 
     # Get resource details
     $PIMResourceFilter = "type eq '" + $ResourceType + "' and displayname eq '" + $ResourceName + "'"
@@ -87,5 +87,5 @@ AssignPIM -RoleName "Reader" -ResourceName $subname -ADGroupName $testGroup -Ass
 foreach ($sub in $subs) {
     AssignPIM -RoleName "Reader" -ResourceName $sub -ADGroupName $testGroup -Assignment -AssignmentType Eligible -Justification "ticket123456"
     #AssignPIM -RoleName "customDevops" -ResourceName $sub -ADGroupName $testGroup -Assignment -AssignmentType Eligible -Justification "ticket123456"
-    AssignPIM -RoleName "VM Contributor" -ResourceName $sub -ADGroupName $testGroup -Assignment -AssignmentType Eligible -Justification "ticket123456"
+    #AssignPIM -RoleName "VM Contributor" -ResourceName $sub -ADGroupName $testGroup -Assignment -AssignmentType Eligible -Justification "ticket123456"
 }
