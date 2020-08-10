@@ -19,6 +19,10 @@ param (
 # if multiple subs
 # $subs = @($subname1, $subname2)
 
+Install-PackageProvider -Name NuGet -RequiredVersion 2.8.5.201 -Force
+Import-PackageProvider -Name NuGet -RequiredVersion 2.8.5.201
+Install-Module AzureAD -Force
+
 function AssignPIM{
 
     Param(
@@ -81,8 +85,6 @@ function AssignPIM{
 }
 
 #example
-Install-Module AzureAD -Force
-Import-Module AzureAD
 AssignPIM -RoleName "Reader" -ResourceName $subname -ADGroupName $testGroup -AssignmentType Eligible -Justification "ticket123456"
 
 #if multiple roles
