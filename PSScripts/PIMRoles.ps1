@@ -6,8 +6,8 @@ param (
     [string] $subname,
     #[string] $groupEnvironment
     [string] $testGroup,
-    [securestring] $tenantId,
-    [securestring] $appId
+    [string] $tenantId,
+    [string] $appId
 )
 
 #Subscription
