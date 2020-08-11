@@ -12,3 +12,12 @@ pool:
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
+
+- task: AzurePowerShell@5
+  inputs:
+    azureSubscription: 'oo-azlabs'
+    ScriptType: 'InlineScript'
+    Inline: |
+      Install-Module -name AzureAD
+      Import-Module -AzureAD
+    azurePowerShellVersion: 'LatestVersion'
