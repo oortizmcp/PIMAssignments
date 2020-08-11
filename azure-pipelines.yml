@@ -12,8 +12,3 @@ pool:
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
-
-- task: PowerShell@2
-  inputs:
-    filePath: 'PSScripts/PIMRoles.ps1'
-    arguments: '-subname $(subname) -testGroup $(testGroup) -appid $(appId) -tenantId $(tenantId) -secret $(secret) -thumb $(thumb)'
