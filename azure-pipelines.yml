@@ -13,11 +13,10 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
-- task: AzurePowerShell@5
+- task: PowerShell@2
   inputs:
-    azureSubscription: 'oo-azlabs'
-    ScriptType: 'InlineScript'
-    Inline: |
-      Install-Module AzureAD
-      Import-Module AzureAD
-    azurePowerShellVersion: 'LatestVersion'
+    targetType: 'inline'
+    script: |
+      Install-PackageProvider -Name NuGet -RequiredVersion 2.8.5.201 -Force
+            Import-PackageProvider -Name NuGet -RequiredVersion 2.8.5.201
+            Install-Module AzureAD -Force
