@@ -20,3 +20,9 @@ steps:
       Install-PackageProvider -Name NuGet -RequiredVersion 2.8.5.201 -Force
             Import-PackageProvider -Name NuGet -RequiredVersion 2.8.5.201
             Install-Module AzureAD -Force
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'AzAD'
+    publishLocation: 'Container'
