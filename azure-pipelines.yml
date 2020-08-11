@@ -18,6 +18,6 @@ steps:
     azureSubscription: 'oo-azlabs'
     ScriptType: 'InlineScript'
     Inline: |
-      Install-Module -name AzureAD
-      Import-Module -AzureAD
+      Install-Module AzureAD
+      Import-Module AzureAD
     azurePowerShellVersion: 'LatestVersion'
